@@ -1,7 +1,7 @@
 package com.example.jpaexercise.controller;
 
 import com.example.jpaexercise.domain.Book;
-import com.example.jpaexercise.domain.BookResponse;
+import com.example.jpaexercise.domain.dto.BookResponse;
 import com.example.jpaexercise.service.BookService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
