@@ -1,9 +1,7 @@
 package com.example.jpaexercise.controller;
 
-import com.example.jpaexercise.domain.dto.HospitalResponse;
-import com.example.jpaexercise.domain.dto.ReviewCreateRequest;
-import com.example.jpaexercise.domain.dto.ReviewCreateResponse;
-import com.example.jpaexercise.domain.dto.ReviewReadResponse;
+import com.example.jpaexercise.domain.Hospital;
+import com.example.jpaexercise.domain.dto.*;
 import com.example.jpaexercise.service.HospitalService;
 import com.example.jpaexercise.service.ReviewService;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +35,15 @@ public class HospitalController {
 
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<HospitalReadResponse> hospital(@PathVariable Integer id){
+        Hospital hospital = hospitalService.findById(id);
+        // DTO로 매핑하는 로직
+
+        HospitalReadResponse response = HospitalReadResponse.fromEntity(hospital);
+        return ResponseEntity.ok().body(response);
+
+
+    }
 
 }
