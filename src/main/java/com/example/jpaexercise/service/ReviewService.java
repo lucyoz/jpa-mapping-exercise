@@ -21,7 +21,7 @@ public class ReviewService {
         this.hospitalRepository = hospitalRepository;
     }
 
-    public ReviewCreateResponse addReview(ReviewCreateRequest reviewCreateRequest){
+    public ReviewCreateResponse createReview(ReviewCreateRequest reviewCreateRequest){
         Optional<Hospital> hospital = hospitalRepository.findById(reviewCreateRequest.getHospitalId());
         Review review = Review.builder()
                 .title(reviewCreateRequest.getTitle())
@@ -33,5 +33,19 @@ public class ReviewService {
         return new ReviewCreateResponse(savedReview.getId(), savedReview.getTitle(), savedReview.getContent(), savedReview.getUserName(), "리뷰 등록을 성공했습니다.");
 
     }
+
+    public Review getReview(Long id) {
+        //Optional<Review> review = reviewRepository.findById(id);
+
+        //Optional과 .orElseThrow()
+        //Optional을 쓰는 이유? null을 쓰지 않으려고, DB조회 시 findById()를 쓸 때 안 나올 수도 있다.
+        //Optional을 썼을 때 .orElseThrow()나 .orElse()등을 써서 코드를 짧게 쓸 수 있다.
+
+        Review review = reviewRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("해당 id가 없습니다."));
+        return review;
+    }
+
+
 
 }
