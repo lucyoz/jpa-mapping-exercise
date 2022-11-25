@@ -1,5 +1,6 @@
 package com.example.jpaexercise.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +22,6 @@ public class Hospital {
     private String hospitalName;
 
     @OneToMany(mappedBy = "hospital", fetch= FetchType.LAZY)
+    @JsonIgnore
     private List<Review> reviews;
 }
