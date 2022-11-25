@@ -9,4 +9,9 @@ ex) http://localhost:8080/api/v1/books
 > 각 Hospital과 병원의 리뷰 
 
 1. 리뷰 등록 기능
+   
 POST/ api/v1/hospitals/{id}/reviews
+   
+2. 리뷰 1개 조회하기
+
+GET/ api/v1/reviews/{id}
